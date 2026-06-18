@@ -1,0 +1,15 @@
+/home/arafath/Design Pattern/Creational Pattern/Builder/bin/Debug/net10.0/Builder
+/home/arafath/Design Pattern/Creational Pattern/Builder/bin/Debug/net10.0/Builder.deps.json
+/home/arafath/Design Pattern/Creational Pattern/Builder/bin/Debug/net10.0/Builder.runtimeconfig.json
+/home/arafath/Design Pattern/Creational Pattern/Builder/bin/Debug/net10.0/Builder.dll
+/home/arafath/Design Pattern/Creational Pattern/Builder/bin/Debug/net10.0/Builder.pdb
+/home/arafath/Design Pattern/Creational Pattern/Builder/obj/Debug/net10.0/Builder.GeneratedMSBuildEditorConfig.editorconfig
+/home/arafath/Design Pattern/Creational Pattern/Builder/obj/Debug/net10.0/Builder.AssemblyInfoInputs.cache
+/home/arafath/Design Pattern/Creational Pattern/Builder/obj/Debug/net10.0/Builder.AssemblyInfo.cs
+/home/arafath/Design Pattern/Creational Pattern/Builder/obj/Debug/net10.0/Builder.csproj.CoreCompileInputs.cache
+/home/arafath/Design Pattern/Creational Pattern/Builder/obj/Debug/net10.0/Builder.sourcelink.json
+/home/arafath/Design Pattern/Creational Pattern/Builder/obj/Debug/net10.0/Builder.dll
+/home/arafath/Design Pattern/Creational Pattern/Builder/obj/Debug/net10.0/refint/Builder.dll
+/home/arafath/Design Pattern/Creational Pattern/Builder/obj/Debug/net10.0/Builder.pdb
+/home/arafath/Design Pattern/Creational Pattern/Builder/obj/Debug/net10.0/Builder.genruntimeconfig.cache
+/home/arafath/Design Pattern/Creational Pattern/Builder/obj/Debug/net10.0/ref/Builder.dll

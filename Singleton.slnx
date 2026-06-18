@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/Creational Pattern/">
+    <Project Path="Creational Pattern/Builder/Builder.csproj" />
     <Project Path="Creational Pattern/Singleton/Singleton.csproj" />
   </Folder>
 </Solution>
