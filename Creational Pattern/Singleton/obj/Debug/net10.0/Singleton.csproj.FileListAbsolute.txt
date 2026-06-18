@@ -1,0 +1,14 @@
+/home/arafath/Design Pattern/Creational Pattern/Singleton/bin/Debug/net10.0/Singleton
+/home/arafath/Design Pattern/Creational Pattern/Singleton/bin/Debug/net10.0/Singleton.deps.json
+/home/arafath/Design Pattern/Creational Pattern/Singleton/bin/Debug/net10.0/Singleton.runtimeconfig.json
+/home/arafath/Design Pattern/Creational Pattern/Singleton/bin/Debug/net10.0/Singleton.dll
+/home/arafath/Design Pattern/Creational Pattern/Singleton/bin/Debug/net10.0/Singleton.pdb
+/home/arafath/Design Pattern/Creational Pattern/Singleton/obj/Debug/net10.0/Singleton.GeneratedMSBuildEditorConfig.editorconfig
+/home/arafath/Design Pattern/Creational Pattern/Singleton/obj/Debug/net10.0/Singleton.AssemblyInfoInputs.cache
+/home/arafath/Design Pattern/Creational Pattern/Singleton/obj/Debug/net10.0/Singleton.AssemblyInfo.cs
+/home/arafath/Design Pattern/Creational Pattern/Singleton/obj/Debug/net10.0/Singleton.csproj.CoreCompileInputs.cache
+/home/arafath/Design Pattern/Creational Pattern/Singleton/obj/Debug/net10.0/Singleton.dll
+/home/arafath/Design Pattern/Creational Pattern/Singleton/obj/Debug/net10.0/refint/Singleton.dll
+/home/arafath/Design Pattern/Creational Pattern/Singleton/obj/Debug/net10.0/Singleton.pdb
+/home/arafath/Design Pattern/Creational Pattern/Singleton/obj/Debug/net10.0/Singleton.genruntimeconfig.cache
+/home/arafath/Design Pattern/Creational Pattern/Singleton/obj/Debug/net10.0/ref/Singleton.dll
