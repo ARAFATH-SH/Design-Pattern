@@ -1,153 +1,127 @@
-﻿public interface ISend
+﻿public interface IPayment
 {
-    void Send();
-}
-public interface ISave
-{
-    void Save();
-}
-public interface ILog
-{
-    void Log();
+    void Process(double amount);
 }
 
-public class EmailNotify : ISend, ISave, ILog
+public interface IShipping
 {
-    public string Email { get; set; }
-    public void Send()
-    {
-        Console.WriteLine("Sending email to " + Email);
-    }
-
-    public void Log()
-    {
-        Console.WriteLine("Logging email to " + Email);
-    }
-
-    public void Save()
-    {
-        Console.WriteLine("Saving db to " + Email);
-    }
-}
-public class SMSNotify : ISend, ISave, ILog
-{
-    public string Phone { get; set; }
-    public void Send()
-    {
-        Console.WriteLine("Sending sms to" + Phone);
-    }
-
-    public void Log()
-    {
-        Console.WriteLine("Logging sms to" + Phone);
-    }
-
-    public void Save()
-    {
-        Console.WriteLine("Saving db to" + Phone);
-    }
-}
-public class PushNotify : ISend, ILog
-{
-    public string Token { get; set; }
-    public void Send()
-    {
-        Console.WriteLine("Sending push to" + Token);
-    }
-
-    public void Log()
-    {
-        Console.WriteLine("Logging sms to" + Token);
-    }
-
+    void Ship(string address);
 }
 
-public class NotifyContext
+public interface IInvoice
 {
-    public ISend Send { get; set; }
-    public ILog Log { get; set; }
-    public ISave  Save { get; set; }
+    void Generate(string orderId, double amount);
+}
 
-    public NotifyContext( ILog log, ISend send, ISave save)
+public class BkashPayment : IPayment
+{
+    public void Process(double amount)
     {
-        Send = send;
-        Log = log;
-        Save = save;
+        Console.WriteLine("Bkash Payment {0}",amount);
     }
-
-    public void Process()
+}
+public class NagadPayment : IPayment
+{
+    public void Process(double amount)
     {
-        Send.Send();
-        Log.Log();
-        if (Save != null)
-        {
-            Save.Save();
-        }
+        Console.WriteLine("Nagad Payment {0}",amount);
+    }
+}
+public class BanglaInvoice : IInvoice
+{
+    public void Generate(string orderId, double amount)
+    {
+        Console.WriteLine($"{orderId} - Bangla Invoice {0}",amount);
+    }
+}
+public class EnglishInvoice : IInvoice
+{
+    public void Generate(string orderId, double amount)
+    {
+        Console.WriteLine($"{orderId} - English Invoice {0}",amount);
+    }
+}
+public class DhakaShipping : IShipping{
+    public void Ship(string address)
+    {
+        Console.WriteLine("Dhaka Shipping {0}",address);
+    }
+}
+public class ChittagongShipping : IShipping{
+    public void Ship(string address)
+    {
+        Console.WriteLine("Chittagong Shipping {0}",address);
     }
 }
 
-public interface INotificationFactory
+public interface IRegionFactory
 {
-    public ISend CreateSend();
-    public ILog CreateLog();
-    public ISave CreateSave();
+    IPayment CreatePayment();
+    IShipping  CreateShipping();
+    IInvoice CreateInvoice();
 }
 
-public class EmailNotificationFactory : INotificationFactory
+public class DhakaFactory : IRegionFactory
 {
-    public ISend CreateSend()
+    public IPayment CreatePayment()
     {
-        return new EmailNotify();
+        return new BkashPayment();
     }
-
-    public ILog CreateLog()
+    public IInvoice CreateInvoice()
     {
-        return new EmailNotify();
+        return new EnglishInvoice();
     }
-
-    public ISave CreateSave()
+    public IShipping CreateShipping()
     {
-        return new EmailNotify();
+        return new DhakaShipping();
     }
 }
-
-public class SMSNotificationFactory : INotificationFactory
+public class ChittagongFactory : IRegionFactory
 {
-    public ISend CreateSend()
+    public IPayment CreatePayment()
     {
-        return new SMSNotify();
+        return new NagadPayment();
     }
-
-    public ILog CreateLog()
+    public IInvoice CreateInvoice()
     {
-        return new SMSNotify();
+        return new BanglaInvoice();
     }
-
-    public ISave CreateSave()
+    public IShipping CreateShipping()
     {
-        return new SMSNotify();
+        return new ChittagongShipping();
     }
 }
 
-public class PushNotificationFactory : INotificationFactory
+public class OrderService
 {
-    public ISend CreateSend()
+    public readonly IRegionFactory _regionFactory;
+    
+    public OrderService(IRegionFactory regionFactory)
     {
-        return new PushNotify();
+        _regionFactory = regionFactory;
     }
 
-    public ILog CreateLog()
+    public void PlaceOrder(string product, double amount, string address)
     {
-        return new PushNotify();
-    }
-
-    public ISave CreateSave()
-    {
-        return null;
+        Console.WriteLine($"Order: {product} - {amount}");
+        
+        IPayment payment = _regionFactory.CreatePayment();
+        payment.Process(amount);
+        
+        IShipping shipping = _regionFactory.CreateShipping();
+        shipping.Ship(address);
+        
+        IInvoice invoice = _regionFactory.CreateInvoice();
+        invoice.Generate("OrID - 0001", amount);
     }
 }
 
-public interface INotificationContextCreator
+class Program
 {
-    public NotifyContext Create();
+    static void Main(string[] args)
+    {
+        IRegionFactory factory = new DhakaFactory();
+        OrderService dhakaOrderService = new OrderService(factory);
+        dhakaOrderService.PlaceOrder("iphone15", 150000, "Savar, Dhaka");
+    }
 }
