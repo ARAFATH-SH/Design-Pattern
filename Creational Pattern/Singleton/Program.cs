@@ -1,4 +1,4 @@
-﻿
+﻿//Singleton Pattern — পুরো Application-এ একটাই Object
 /*
     step -
 
